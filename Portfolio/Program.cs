@@ -1,5 +1,7 @@
+using Portfolio.Data.DAL;
 using Serilog;
 using Serilog.Events;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,18 @@ builder.Host.UseSerilog((hostContext, services, configuration) =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+#region DataBase
+
+builder. Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
+
+#endregion
+
+
+
+
 
 var app = builder.Build();
 
