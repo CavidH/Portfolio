@@ -1,7 +1,14 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Portfolio.Data.DAL;
 using Serilog;
 using Serilog.Events;
 using Microsoft.EntityFrameworkCore;
+using Portfolio.Business.Services.Implementations;
+using Portfolio.Business.Services.Interfaces;
+using Portfolio.Core.Entities;
+using Portfolio.Core.Interfaces.UnitOfWork;
+using Portfolio.Data.Implementations.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,15 +38,53 @@ builder.Services.AddControllersWithViews();
 
 #region DataBase
 
-builder. Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
 #endregion
 
+#region Identity
+
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Lockout.MaxFailedAccessAttempts = 15;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMilliseconds(5);
+    options.Lockout.AllowedForNewUsers = true;
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+});
 
+#endregion
 
+#region Cooike
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.SlidingExpiration = true;
+        options.AccessDeniedPath = "/Forbidden/";
+    });
+
+#endregion
+
+#region UnitOfWork
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUnitOfWorkService, UnitOfWorkService>();
+
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -56,7 +101,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
 
 
 app.UseEndpoints(endpoints =>
