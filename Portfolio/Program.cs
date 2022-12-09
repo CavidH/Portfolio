@@ -1,4 +1,27 @@
+using Serilog;
+using Serilog.Events;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+#region Logger
+
+builder.Host.UseSerilog((hostContext, services, configuration) =>
+{
+    configuration.MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+        .Enrich.FromLogContext()
+        .WriteTo.File(
+            Path.Combine("Logs", "Log.txt"),
+            rollingInterval: RollingInterval.Day,
+            fileSizeLimitBytes: 10 * 1024 * 1024,
+            retainedFileCountLimit: 30,
+            rollOnFileSizeLimit: true,
+            shared: true,
+            flushToDiskInterval: TimeSpan.FromSeconds(2))
+        .WriteTo.Console();
+});
+
+#endregion
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -20,7 +43,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
- 
+
 
 app.UseEndpoints(endpoints =>
 {
