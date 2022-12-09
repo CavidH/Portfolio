@@ -18,7 +18,7 @@ namespace Portfolio.Data.Implementations.UnitOfWork
         {
             _dbContext = dbContext;
         }
-        public ISkillRepository ISkillRepository => _skillRepository ??= new SkillRepository(_dbContext);
+        public ISkillRepository SkillRepository => _skillRepository ??= new SkillRepository(_dbContext);
 
         public async Task SaveAsync() => await _dbContext.SaveChangesAsync();
     }

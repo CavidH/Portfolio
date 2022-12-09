@@ -72,10 +72,11 @@
         <div class="dropdown-divider"></div>
 
         <!-- item-->
-        <a asp-area="" asp-controller="Account" asp-action="Logout" class="dropdown-item notify-item">
-            <i class="mdi mdi-logout-variant"></i>
-            <span>Logout</span>
-        </a>
+     @* @todo *@
+        @* <a asp-area="" asp-controller="Account" asp-action="Logout" class="dropdown-item notify-item"> *@
+        @*     <i class="mdi mdi-logout-variant"></i> *@
+        @*     <span>Logout</span> *@
+        @* </a> *@
 
     </div>
 </li>
@@ -149,76 +150,83 @@
                 <li class="menu-title">Navigation</li>
 
                 <li>
-                    <a asp-area="AdminRezerv" asp-controller="DashBoard" asp-action="Index" class="waves-effect">
+                    <a asp-area="AdminPanel" asp-controller="DashBoard" asp-action="Index" class="waves-effect">
                         <i class=" fas fa-compass"></i>
                         <span class="text-light">DashBoard </span>
                     </a>
+                </li>
+                <li>
+                    <a asp-area="AdminPanel" asp-controller="Skill" asp-action="Index" class="waves-effect">
+                        <i class=" fas fa-compass"></i>
+                        <span class="text-light">Skills</span>
+                    </a>
                 </li> 
-                <li>
-                    <a asp-area="AdminRezerv" asp-controller="Category" asp-action="Index" class="waves-effect">
-                        <i class=" fab fa-slack-hash"></i>
-                        <span class="text-light">Product Category </span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="AdminRezerv" asp-controller="Product" asp-action="Index" class="waves-effect">
-                        <i class="mdi mdi-food"></i>
-                        <span class="text-light">Products</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="AdminRezerv" asp-controller="Table" asp-action="Index" class="waves-effect">
-                        <i class="  fas fa-table"></i>
-                        <span class="text-light">Tables</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="AdminRezerv" asp-controller="Reservation" asp-action="Index" class="waves-effect">
-                        <i class="  fas fa-save"></i>
-                        <span class="text-light">Reservations</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="AdminRezerv" asp-controller="Gallery" asp-action="Index" class="waves-effect">
-                        <i class=" ion ion-md-images"></i>
-                        <span class="text-light">Gallery</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="AdminRezerv" asp-controller="Contact" asp-action="Index" class="waves-effect">
-                        <i class=" far fa-address-book"></i>
-                        <span class="text-light">Contact</span>
-                    </a>
-                </li><li>
-                    <a asp-area="AdminRezerv" asp-controller="Message" asp-action="Index" class="waves-effect">
-                        <i class=" far fa-paper-plane"></i>
-                        <span class="text-light">Send Notification</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Account" asp-action="Create" class="waves-effect">
-                        <i class=" fas fa-user-plus"></i>
-                        <span class="text-light">Admin Register</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="mdi mdi-settings-outline"></i>
-                        <span class="text-light">Setting</span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li>
-                            <a asp-controller="HeadSlide" asp-action="Index">Head Slider</a>
-                        </li>
-                        <li>
-                            <a asp-controller="Setting" asp-action="Index">Plan And Parallax</a>
-                        </li>
-                        <li>
-                            <a asp-controller="About" asp-action="Index">About </a>
-                        </li>
-
-                    </ul>
-                </li>
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Category" asp-action="Index" class="waves-effect"> *@
+                @*         <i class=" fab fa-slack-hash"></i> *@
+                @*         <span class="text-light">Product Category </span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Product" asp-action="Index" class="waves-effect"> *@
+                @*         <i class="mdi mdi-food"></i> *@
+                @*         <span class="text-light">Products</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Table" asp-action="Index" class="waves-effect"> *@
+                @*         <i class="  fas fa-table"></i> *@
+                @*         <span class="text-light">Tables</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Reservation" asp-action="Index" class="waves-effect"> *@
+                @*         <i class="  fas fa-save"></i> *@
+                @*         <span class="text-light">Reservations</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Gallery" asp-action="Index" class="waves-effect"> *@
+                @*         <i class=" ion ion-md-images"></i> *@
+                @*         <span class="text-light">Gallery</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Contact" asp-action="Index" class="waves-effect"> *@
+                @*         <i class=" far fa-address-book"></i> *@
+                @*         <span class="text-light">Contact</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="AdminRezerv" asp-controller="Message" asp-action="Index" class="waves-effect"> *@
+                @*         <i class=" far fa-paper-plane"></i> *@
+                @*         <span class="text-light">Send Notification</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a asp-area="" asp-controller="Account" asp-action="Create" class="waves-effect"> *@
+                @*         <i class=" fas fa-user-plus"></i> *@
+                @*         <span class="text-light">Admin Register</span> *@
+                @*     </a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a href="javascript: void(0);" class="waves-effect"> *@
+                @*         <i class="mdi mdi-settings-outline"></i> *@
+                @*         <span class="text-light">Setting</span> *@
+                @*     </a> *@
+                @*     <ul class="nav-second-level" aria-expanded="false"> *@
+                @*         <li> *@
+                @*             <a asp-controller="HeadSlide" asp-action="Index">Head Slider</a> *@
+                @*         </li> *@
+                @*         <li> *@
+                @*             <a asp-controller="Setting" asp-action="Index">Plan And Parallax</a> *@
+                @*         </li> *@
+                @*         <li> *@
+                @*             <a asp-controller="About" asp-action="Index">About </a> *@
+                @*         </li> *@
+                @* *@
+                @*     </ul> *@
+                @* </li> *@
 
             </ul>
 

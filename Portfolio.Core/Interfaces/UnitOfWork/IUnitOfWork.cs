@@ -2,7 +2,7 @@
 {
     public interface IUnitOfWork
     {
-        public ISkillRepository ISkillRepository { get; }
+        public ISkillRepository SkillRepository { get; }
 
         Task SaveAsync();
     }

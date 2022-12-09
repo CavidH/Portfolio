@@ -1,4 +1,5 @@
 ﻿using Portfolio.Business.Services.Interfaces;
+using Portfolio.Core.Entities;
 using Portfolio.Core.Interfaces.UnitOfWork;
 
 namespace Portfolio.Business.Services.Implementations
@@ -11,5 +12,8 @@ namespace Portfolio.Business.Services.Implementations
         {
             _unitOfWork = unitOfWork;
         }
+
+        public async Task<List<Skill>> GetAllAsync()=> await _unitOfWork.SkillRepository.GetAllAsync();
+       
     }
 }
