@@ -7,7 +7,7 @@ namespace Portfolio.Areas.AdminPanel.Controllers
     {
         public IActionResult Index()
         {
-            return Content("ok");
+            return View();
         }
     }
 }
